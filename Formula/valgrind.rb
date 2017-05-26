@@ -16,6 +16,10 @@ class Valgrind < Formula
       url "https://raw.githubusercontent.com/Homebrew/formula-patches/54d59bf/valgrind/bzero.diff"
       sha256 "48de4054dba20c27ef6089d3ea7832e48dcbbb5368ac4316394b8be55ffe93a2"
     end
+
+    # https://bugs.kde.org/show_bug.cgi?id=365327#c2
+    # https://github.com/Homebrew/homebrew-core/pull/6231#issuecomment-255779374
+    depends_on MaximumMacOSRequirement => :el_capitan
   end
 
   bottle do
@@ -30,10 +34,6 @@ class Valgrind < Formula
     depends_on "automake" => :build
     depends_on "libtool" => :build
   end
-
-  # https://bugs.kde.org/show_bug.cgi?id=365327#c2
-  # https://github.com/Homebrew/homebrew-core/pull/6231#issuecomment-255779374
-  depends_on MaximumMacOSRequirement => :el_capitan
 
   # Valgrind needs vcpreload_core-*-darwin.so to have execute permissions.
   # See #2150 for more information.
